@@ -24,9 +24,9 @@ $(function () {
 
 
 const timeDispEl = $("#currentDay")
-var sheduleWrap = $(".container-lg")
+var scheduleWrap = $(".container")
 var saveBtnEl = $(".saveBTN")   //cant be global so we know chich exact button is clicked
-let workDay = {
+let workDay = {           //we will have 12 elements, 1 for each hr 6 to 18
     start: 6,
     finish: 18
 }
@@ -38,7 +38,24 @@ function timeNow(){
   var currentTime = dayjs().format("DD-MM-YYYY HH:mm:ss");
     timeDispEl.text(currentTime);
   }
-timeNow()
+setInterval(timeNow, 1000)
+
+//create for loop using time from workDay - i=start hours, finishing codition end hours
+
+
+//add new entry
+  //create new div
+  //give it a class
+  // append to sheduleWrap
+  let scheduleEntry = $("<div>");
+  scheduleEntry.addClass("newEntry");
+  scheduleWrap.append(scheduleEntry);
+
+
+
+
+
+
 
 
 
