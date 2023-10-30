@@ -4,20 +4,35 @@ body {
 }
 
 textarea {
+  width: 80%;
+  height: 100%;
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
+  border-right: 1px solid black;
   padding: 10px;
+
 }
 
-.newEntry {
+ .itsAWrap {
+  display:flex;
   width: 100%;
-  height: 75px;
-  border: 1px yellow solid;
-  
-}
+  height: 80px;
+  border: 1px black solid;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+ }
+
+ .hourDisp {
+  width: 10%;
+  height: 100%;
+  border: 1px black solid;
+  text-align: center;
+  justify-content: center;
+  box-sizing: border-box;
+ }
+
 .description {
   white-space: pre-wrap;
 }
@@ -52,6 +67,8 @@ textarea {
 }
 
 .saveBtn {
+  width: 10%;
+  height: 100%;
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;

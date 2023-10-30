@@ -42,14 +42,34 @@ setInterval(timeNow, 1000)
 
 //create for loop using time from workDay - i=start hours, finishing codition end hours
 
+  //wrap this in a for loop for the number of hours specs in workDay
+for (var i=workDay.start; i <= workDay.finish; i++){
+    //create objects to hold time/textarea/save btn
+    let scheduleEntry = $("<div>");
+    scheduleEntry.addClass("itsAWrap");
+    scheduleWrap.append(scheduleEntry);
 
-//add new entry
-  //create new div
-  //give it a class
-  // append to sheduleWrap
-  let scheduleEntry = $("<div>");
-  scheduleEntry.addClass("newEntry");
-  scheduleWrap.append(scheduleEntry);
+    //create hour display
+    let hourDisp = $("<span>");
+    hourDisp.addClass("hourDisp");
+    hourDisp.text(i);
+    scheduleEntry.append(hourDisp);
+
+    //create textWrap
+    let textArea = $("<textarea>");
+    textArea.addClass("textArea")
+    scheduleEntry.append(textArea)
+
+    //create save btn
+    let saveBtn = $("<button>");
+    saveBtn.addClass("saveBtn");
+    saveBtn.attr("hour",i);
+    scheduleEntry.append(saveBtn)
+
+
+
+
+}
 
 
 
