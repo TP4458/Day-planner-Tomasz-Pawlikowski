@@ -22,13 +22,14 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-
+var startTime = dayjs().hour(9).format("HH");
+var endTime = dayjs().hour(17).format("HH");
 const timeDispEl = $("#currentDay")
 var scheduleWrap = $(".container")
 var saveBtnEl = $(".saveBTN")   //cant be global so we know chich exact button is clicked
 let workDay = {           //we will have 12 elements, 1 for each hr 6 to 18
-    start: 6,
-    finish: 18
+    start: startTime,
+    finish: endTime
 }
 
 
@@ -40,6 +41,8 @@ function timeNow(){
   }
 setInterval(timeNow, 1000)
 
+var hourNow = dayjs().hour()
+console.log(hourNow)
 //create for loop using time from workDay - i=start hours, finishing codition end hours
 
   //wrap this in a for loop for the number of hours specs in workDay
@@ -59,6 +62,13 @@ for (var i=workDay.start; i <= workDay.finish; i++){
     let textArea = $("<textarea>");
     textArea.addClass("textArea")
     scheduleEntry.append(textArea)
+
+    if (i > hourNow){
+      textArea.addClass("future")
+    } else if (i < hourNow) {
+      textArea.addClass("past")
+    } else {textArea.addClass("present")}
+   
 
     //create save btn
     let saveBtn = $("<button>");
