@@ -1,51 +1,24 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-});
-
-var startTime = dayjs().hour(9).format("HH");
-var endTime = dayjs().hour(17).format("HH");
+var startTime = dayjs().hour(0).format("HH");
+var endTime = dayjs().hour(23).format("HH");
 const timeDispEl = $("#currentDay")
 var scheduleWrap = $(".container")
 
-let workDay = {           //we will have 12 elements, 1 for each hr 6 to 18
+let workDay = {           
     start: startTime,
     finish: endTime
 }
 
-
-//how will the shedule entry be stored? array ? object time:entry?
-
+//current time and date
 function timeNow(){
   var currentTime = dayjs().format("DD-MM-YYYY HH:mm:ss");
     timeDispEl.text(currentTime);
   }
 setInterval(timeNow, 1000)
 
+//current hour to use in the IF
 var hourNow = dayjs().hour()
 console.log(hourNow)
-//create for loop using time from workDay - i=start hours, finishing codition end hours
 
-  //wrap this in a for loop for the number of hours specs in workDay
 for (var i=workDay.start; i <= workDay.finish; i++){
     //create objects to hold time/textarea/save btn
     let scheduleEntry = $("<div>");
@@ -71,7 +44,6 @@ for (var i=workDay.start; i <= workDay.finish; i++){
       textArea.addClass("past");
     } else {textArea.addClass("present")}
    
-
     //create save btn
     let saveBtn = $("<button>");
     saveBtn.addClass("saveBtn");
@@ -80,6 +52,7 @@ for (var i=workDay.start; i <= workDay.finish; i++){
     scheduleEntry.append(saveBtn)
     saveBtn.on("click", saveBtnHndlr)
 
+    //save button functionality
     function saveBtnHndlr(save){
       let button = $(save.currentTarget)
       let hour = button.attr("data-hour")
@@ -89,18 +62,8 @@ for (var i=workDay.start; i <= workDay.finish; i++){
         localStorage.removeItem(hour)
       }else {
         localStorage.setItem(hour, textArea.val());
-
     }
-
   }
-    //TODO: save to local storage
-
-    //styling here and there
-    //clear unused css/html
-
-
-
-
 }
 
 
