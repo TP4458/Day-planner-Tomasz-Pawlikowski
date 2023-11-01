@@ -26,7 +26,7 @@ var startTime = dayjs().hour(9).format("HH");
 var endTime = dayjs().hour(17).format("HH");
 const timeDispEl = $("#currentDay")
 var scheduleWrap = $(".container")
-var saveBtnEl = $(".saveBTN")   //cant be global so we know chich exact button is clicked
+
 let workDay = {           //we will have 12 elements, 1 for each hr 6 to 18
     start: startTime,
     finish: endTime
@@ -55,26 +55,48 @@ for (var i=workDay.start; i <= workDay.finish; i++){
     //create hour display
     let hourDisp = $("<span>");
     hourDisp.addClass("hourDisp");
-    hourDisp.text(i);
+    hourDisp.text(dayjs().hour(i).format("HH[:00]"));
     scheduleEntry.append(hourDisp);
 
     //create textWrap
     let textArea = $("<textarea>");
-    textArea.addClass("textArea")
-    scheduleEntry.append(textArea)
+    textArea.addClass("textArea");
+    textArea.attr("id",i);
+    scheduleEntry.append(textArea);
+    textArea.val(localStorage.getItem(i))
 
     if (i > hourNow){
-      textArea.addClass("future")
+      textArea.addClass("future");
     } else if (i < hourNow) {
-      textArea.addClass("past")
+      textArea.addClass("past");
     } else {textArea.addClass("present")}
    
 
     //create save btn
     let saveBtn = $("<button>");
     saveBtn.addClass("saveBtn");
-    saveBtn.attr("hour",i);
+    saveBtn.attr("data-hour",i);
+    saveBtn.text("save")
     scheduleEntry.append(saveBtn)
+    saveBtn.on("click", saveBtnHndlr)
+
+    function saveBtnHndlr(save){
+      let button = $(save.currentTarget)
+      let hour = button.attr("data-hour")
+      let textArea = $(`#${hour}`)
+
+      if (textArea.val().trim() === "") {
+        localStorage.removeItem(hour)
+      }else {
+        localStorage.setItem(hour, textArea.val());
+
+    }
+
+  }
+    //TODO: save to local storage
+
+    //styling here and there
+    //clear unused css/html
 
 
 
