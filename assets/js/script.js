@@ -1,5 +1,5 @@
-var startTime = dayjs().hour(0).format("HH");
-var endTime = dayjs().hour(23).format("HH");
+var startTime = dayjs().hour(9).format("HH");
+var endTime = dayjs().hour(17).format("HH");
 const timeDispEl = $("#currentDay")
 var scheduleWrap = $(".container")
 

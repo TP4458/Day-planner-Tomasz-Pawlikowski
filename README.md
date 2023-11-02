@@ -1,5 +1,21 @@
 # 05 Third-Party APIs: Work Day Scheduler
 
+## Description
+
+This apllication was created as a week 5 projecst of edX full-stack coding bootcamp.
+
+It's a simple day planner application, composed of 9 hourly segments for the working day of 9-17, that the user can save their schedule into.
+
+It features a current date and time display, save buttons allowing the user to save the information entered into individual blocks, and colour coding for past, current a present time blocks. Past blocks will be displayed in grey, current block will be displayed in red, while future time blocks will be coloured green.
+
+## Deployed URL
+
+[https://tp4458.github.io/Day-planner-Tomasz-Pawlikowski/](https://tp4458.github.io/Day-planner-Tomasz-Pawlikowski/)
+
+## Screenshot
+
+![Application screenshot](WDS_Screenshot-1.JPG)
+
 ## Your Task
 
 Create a simple calendar application that allows a user to save events for each hour of a typical working day (9am&ndash;5pm) by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
