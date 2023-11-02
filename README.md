@@ -2,7 +2,7 @@
 
 ## Description
 
-This apllication was created as a week 5 projecst of edX full-stack coding bootcamp.
+This apllication was created as a week 5 project of the edX full-stack coding bootcamp.
 
 It's a simple day planner application, composed of 9 hourly segments for the working day of 9-17, that the user can save their schedule into.
 
